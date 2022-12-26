@@ -7,13 +7,6 @@ local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
 require("collision")()
-    -- require("collision") {
-    --     --        Normal    Xephyr       Vim      G510
-    --     up    = { "Up"    , "&"        , "k"   , "F15" },
-    --     down  = { "Down"  , "KP_Enter" , "j"   , "F14" },
-    --     left  = { "Left"  , "#"        , "h"   , "F13" },
-    --     right = { "Right" , "\""       , "l"   , "F17" },
-    -- }
 -- Widget and layout library
 local wibox = require("wibox")
 -- Theme handling library
@@ -162,7 +155,7 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-    awful.key({ modkey,           }, "o",      hotkeys_popup.show_help,
+    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
@@ -248,16 +241,10 @@ globalkeys = gears.table.join(
 	awful.util.spawn("dmenu_run") end,
               {description = "launch dmenu", group = "atharv"}),
 
-    --Brave	 
+    --Firefox 
     awful.key({ modkey },            "b",     function () 
-	awful.util.spawn("brave-browser") end,
-              {description = "launch brave", group = "atharv"}),
-
-----Youtube
---    awful.key({ modkey },            "y",     function () 
---	awful.util.spawn("youtube") end,
---              {description = "launch Youtube", group = "atharv"}),
-
+	awful.util.spawn("firefox") end,
+              {description = "launch firefox", group = "atharv"}),
 
 
     -- Menubar
@@ -453,41 +440,41 @@ end)
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 -- client.connect_signal("request::titlebars", function(c)
 --     -- buttons for the titlebar
-    -- local buttons = gears.table.join(
-    --     awful.button({ }, 1, function()
-    --         c:emit_signal("request::activate", "titlebar", {raise = true})
-    --         awful.mouse.client.move(c)
-    --     end),
-    --     awful.button({ }, 3, function()
-    --         c:emit_signal("request::activate", "titlebar", {raise = true})
-    --         awful.mouse.client.resize(c)
-    --     end)
-    -- )
+--     local buttons = gears.table.join(
+--         awful.button({ }, 1, function()
+--             c:emit_signal("request::activate", "titlebar", {raise = true})
+--             awful.mouse.client.move(c)
+--         end),
+--         awful.button({ }, 3, function()
+--             c:emit_signal("request::activate", "titlebar", {raise = true})
+--             awful.mouse.client.resize(c)
+--         end)
+--     )
 
-    -- awful.titlebar(c) : setup {
-    --     { -- Left
-    --         awful.titlebar.widget.iconwidget(c),
-    --         buttons = buttons,
-    --         layout  = wibox.layout.fixed.horizontal
-    --     },
-    --     { -- Middle
-    --         { -- Title
-    --             align  = "center",
-    --             widget = awful.titlebar.widget.titlewidget(c)
-    --         },
-    --         buttons = buttons,
-    --         layout  = wibox.layout.flex.horizontal
-    --     },
-    --     { -- Right
-    --         awful.titlebar.widget.floatingbutton (c),
-    --         awful.titlebar.widget.maximizedbutton(c),
-    --         awful.titlebar.widget.stickybutton   (c),
-    --         awful.titlebar.widget.ontopbutton    (c),
-    --         awful.titlebar.widget.closebutton    (c),
-    --         layout = wibox.layout.fixed.horizontal()
-    --     },
-    --     layout = wibox.layout.align.horizontal
-    -- }
+--     awful.titlebar(c) : setup {
+--         { -- Left
+--             awful.titlebar.widget.iconwidget(c),
+--             buttons = buttons,
+--             layout  = wibox.layout.fixed.horizontal
+--         },
+--         { -- Middle
+--             { -- Title
+--                 align  = "center",
+--                 widget = awful.titlebar.widget.titlewidget(c)
+--             },
+--             buttons = buttons,
+--             layout  = wibox.layout.flex.horizontal
+--         },
+--         { -- Right
+--             awful.titlebar.widget.floatingbutton (c),
+--             awful.titlebar.widget.maximizedbutton(c),
+--             awful.titlebar.widget.stickybutton   (c),
+--             awful.titlebar.widget.ontopbutton    (c),
+--             awful.titlebar.widget.closebutton    (c),
+--             layout = wibox.layout.fixed.horizontal()
+--         },
+--         layout = wibox.layout.align.horizontal
+--     }
 -- end)
 
 -- -- Enable sloppy focus, so that focus follows mouse.
@@ -507,8 +494,6 @@ awful.spawn.with_shell("~/.config/awesome/autorun.sh")
 -- }}}
 
 
-awful.spawn.with_shell("/.config/picom/picom.conf")
-awful.spawn.with_shell("/home/rajesh/.config/polybar/launch.sh")
-awful.spawn.with_shell("nitrogen --set-zoom-fill --random ~/wal/anime")
-awful.spawn.with_shell("picom --experimental-backends")
+awful.spawn.with_shell("picom")
+awful.spawn.with_shell("nitrogen --set-zoom-fill --random ~/wallpapers/images")
 
